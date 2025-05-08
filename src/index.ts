@@ -27,8 +27,7 @@ function filterByRating(
 ): { title: string; rating: number }[] {
   return items.filter((item) => item.rating >= 4);
 }
-
-filterByRating(books);
+    filterByRating(books);
 
 
 
@@ -83,8 +82,8 @@ concatenateArrays([1, 2], [4, 5, 6]);
      }
     
      const myCar = new Car("Toyota", 2020, "Corolla");
-     (myCar.getInfo());   
-     (myCar.getModel());
+     console.log(myCar.getInfo());   
+     console.log(myCar.getModel());
 
 
 
@@ -135,6 +134,7 @@ function getMostExpensiveProduct(products: Product[]): Product | null {
 }
 
    getMostExpensiveProduct(products);
+  
 
 
 
@@ -170,18 +170,18 @@ getDayType(Day.Sunday);
 
 
 
+
 async function squareAsync(n: number): Promise<number> {
-   
-  return new Promise ((resolve, reject) =>{
-     setTimeout(() =>{
-      if(n < 0){
-        reject(new Error ("Negative number not allowed"))
-      } else{
-        resolve(n * n)
-      }
-     }, 1000);
-  })
-} 
+  return new Promise((resolve, reject) => {
+    if (n < 0) {
+      return reject(new Error("negtive number is not allow"));
+    }
+
+    setTimeout(() => {
+      resolve(n * n);
+    }, 1000);
+  });
+}
 
 
   squareAsync(4).then(console.log);
