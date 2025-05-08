@@ -1,6 +1,4 @@
-     /* ---------------------------------Problem number is 2  ---------------------------------------------------->*/
 
-/* function formatString(input: string, toUpper?: boolean): string */
 
 function formatString(input: string, toUpper: boolean = true): string {
   if (toUpper) {
@@ -9,105 +7,182 @@ function formatString(input: string, toUpper: boolean = true): string {
     return input.toLowerCase();
   }
 }
-console.log(formatString("LOVE BANGLADESH"));   // "LOVE BANGLADESH"
-console.log(formatString("Hello", true));   // "HELLO"
-console.log(formatString("Hello", false));  // "hello"  
+      (formatString("LOVE BANGLADESH"));
+      (formatString("Hello", true)); 
+     (formatString("Hello", false)); 
 
 
-     /* ---------------------------------Problem number is 2  ---------------------------------------------------->*/
+
+
+
+
+const books = [
+  { title: "Book A", rating: 4.5 },
+  { title: "Book B", rating: 3.2 },
+  { title: "Book C", rating: 5.0 },
+];
+
+function filterByRating(
+  items: { title: string; rating: number }[]
+): { title: string; rating: number }[] {
+  return items.filter((item) => item.rating >= 4);
+}
+
+filterByRating(books);
+
+
+
+
+
+
+function concatenateArrays<T>(...arrays: T[][]): T[] {
+  let newArray: T[] = [];
+  for (let arr of arrays) {
+    newArray.push(...arr);
+  }
+  return newArray;
+}
+
+concatenateArrays(["a", "b"], ["c", "d"]);
+concatenateArrays([1, 2], [4, 5, 6]);
+
+
+
+
+
+
+
+    class Vehicle{
+    private  make:string ;
+    private  year:number ; 
      
-
-
-     const books = [
-        { title: "Book A", rating: 4.5 },
-        { title: "Book B", rating: 3.2 },
-        { title: "Book C", rating: 5.0 }
-      ];
-      
-      function filterByRating(items: { title: string; rating: number }[]): { title: string; rating: number }[] {
-        return items.filter(item => item.rating >=4
-        );
-      }
-      
-    (filterByRating(books)); 
-
-
-     /* ---------------------------------Problem number is 3  ---------------------------------------------------->*/
-
-    function concatenateArrays<T>(...arrays: T[][]): T[] {
-        let newArray: T[] = [];
-        for (let arr of arrays) {
-          newArray.push(...arr);
-        }
-        return newArray;
-      }
-      
-      const result = concatenateArrays([1, 2, ], [4, 5, 6]);
-      console.log(result); 
-
-
-
-
-     /* ---------------------------------Problem number is 4  ---------------------------------------------------->*/
-     
-
-
-
-
-
-
-      
-     /* ---------------------------------Problem number is 5  ---------------------------------------------------->*/
-     
-     function processValue(value: string | number):number {
-        if(typeof value === 'number'){
-          return  value * 2 ;
-        } else {
-            return value.length ;
-        } 
-    
+    constructor(make:string, year:number){
+      this.make = make;
+      this.year = year ;
      }
-       
-     processValue("hello"); 
-     processValue(10);         
+     
+     public getInfo():string {
+      return `Make:${this.make}, Year: ${this.year}`
+     } 
 
-
-     /* ---------------------------------Problem number is 7  ---------------------------------------------------->*/
-
-
-
-
-
-
-
-
-
-
-
-
-      
-     /* ---------------------------------Problem number is 7  ---------------------------------------------------->*/
-
-
-     enum Day {
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
-      }
-      
-      function getDayType(day: Day): string {
-        if(day === Day.Saturday || day === Day.Sunday){
-            return "Weekend" 
-        }
-         else{
-            return "Weekday"
-         }
-      }
-
-      getDayType(Day.Monday);   // Output: "Weekday"
-      getDayType(Day.Sunday);   // Output: "Weekend"
     
+    }
+      
+    class Car extends Vehicle {
+      
+      private model:string ;
+
+      constructor (make:string, year:number, model:string){
+        super(make, year)
+        this.model = model ;
+      }
+
+      public getModel():string {
+        return `model:  ${this.model}`
+      }
+     }
+    
+     const myCar = new Car("Toyota", 2020, "Corolla");
+     (myCar.getInfo());   
+     (myCar.getModel());
+
+
+
+
+
+
+
+
+function processValue(value: string | number): number {
+  if (typeof value === "number") {
+    return value * 2;
+  } else {
+    return value.length;
+  }
+}
+
+processValue("hello");
+processValue(10);
+
+
+
+
+
+
+
+interface Product {
+  name: string;
+  price: number;
+}
+
+const products = [
+  { name: "Pen", price: 10 },
+  { name: "Notebook", price: 25 },
+  { name: "Bag", price: 50 },
+];
+function getMostExpensiveProduct(products: Product[]): Product | null {
+  if (products.length === 0) {
+    return null;
+  }
+  if (products) {
+    const item = products.reduce((fst, sec) =>
+      fst.price > sec.price ? fst : sec
+    );
+    return item;
+  } else {
+    return null;
+  }
+}
+
+   getMostExpensiveProduct(products);
+
+
+
+
+
+
+
+enum Day {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
+function getDayType(day: Day): string {
+  if (day === Day.Saturday || day === Day.Sunday) {
+    return "Weekend";
+  } else {
+    return "Weekday";
+  }
+}
+
+getDayType(Day.Monday); 
+getDayType(Day.Sunday); 
+
+
+
+
+
+
+
+
+async function squareAsync(n: number): Promise<number> {
+   
+  return new Promise ((resolve, reject) =>{
+     setTimeout(() =>{
+      if(n < 0){
+        reject(new Error ("Negative number not allowed"))
+      } else{
+        resolve(n * n)
+      }
+     }, 1000);
+  })
+} 
+
+
+  squareAsync(4).then(console.log);
+  squareAsync(-3).catch(console.error); 
