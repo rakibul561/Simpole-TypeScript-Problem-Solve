@@ -1,3 +1,5 @@
+ <h1> TypeScript Blog </h1>
+
 🔧 How does TypeScript improve code quality and project maintainability?
 
 TypeScript helps identify potential issues early during the development process, which reduces bugs and makes development more efficient.
